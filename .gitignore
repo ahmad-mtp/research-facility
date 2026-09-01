@@ -1,0 +1,5 @@
+# Research output — topic material stays local, tooling is what gets committed
+research/
+
+# macOS
+.DS_Store
