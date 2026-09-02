@@ -54,3 +54,23 @@ When launching the research Agent, include:
 - The orchestrator session stays thin — it plans and delegates, nothing else.
 - Each Agent works autonomously through the full plan without needing orchestrator intervention.
 - If the user asks to continue or extend a research topic, read the existing plan/findings and spawn a new Agent for the next phase.
+
+## Directive: "Research autonomously"
+
+When the user's prompt contains **"Research autonomously"**, run the whole
+methodology above end-to-end with zero further questions:
+
+1. Slugify the topic → `research/<topic-slug>/`.
+2. Write `plan.md` from `templates/plan-template.md` (all 5 phases, topic-adapted).
+   Skip plan mode and skip approval — the directive IS the approval.
+3. Launch ONE Agent (`subagent_type: general-purpose`) with the full plan, the
+   working dir, phase-logging instructions, and all-tools permission.
+4. Report back in one line when it finishes.
+
+Never do the research in the orchestrator session.
+
+## Communication Rule (HARD)
+
+Replies must not exceed the user's own word count by more than 10 words.
+5-word question → ~5-word answer. This is a brainstorming facility, not an
+essay pitch. One-liners by default. Non-negotiable.
